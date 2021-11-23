@@ -7,7 +7,7 @@ var durum = true;
 
 
 function calculateWinner(squares) {
-  var donguSayisi = JSON.stringify(squares);
+  var donguSquare = JSON.stringify(squares);
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -18,19 +18,27 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
 
+
+
     if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-      alert("Biri Kazandı valla");
-      // Kazanan: true  yazmasını istemiyorsan  return true yerine aşağıdakini return et :)
+
+      // console.log(squares[a], squares[b], squares[c]);
+
+      // Kazanan: true yazmasını istemiyorsan  return true yerine aşağıdakini return et :)
       return squares[a];
     }
-    // var donguSayisi = concat[( '%cA: ' + squares[a] + '        B: ' + squares[b] + '         C: ' + squares[c])];
   }
 
 
-  if (durum == true) console.log(donguSayisi);
+
+  if (durum == true) {
+    // console.log(donguSquare);
+  }
   durum = !durum;
 
   return null;
@@ -96,16 +104,29 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
       }],
       xIsNext: true,
+      stepNumber: 0,
     };
   };
 
+  jumpTo(sirasi){
+    this.setState({
+      stepNumber: sirasi,
+      xIsNext: (sirasi % 2) === 0,
+    });
+  }
+
   handleClick(i) {
-    const history = this.state.history;
+
+
+    const history = this.state.history.slice(0, this.state.stepNumber + 1 );
+    // console.log(history);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
-    // squares[i] = null olarak  geliyor
-    // Eğer seçtiğimiz bir kareyi tekrar seçersek bu sefer dolu geliyor
+    // console.log(current  );
+    // console.log("squares: " + squares);
+
+    // squares[i] = null olarak  geliyor. Eğer seçtiğimiz bir kareyi tekrar seçersek bu sefer dolu geliyor
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
@@ -115,17 +136,30 @@ class Game extends React.Component {
         squares: squares,
       }]),
       xIsNext: !this.state.xIsNext,
+      stepNumber: history.length,
     });
   }
 
   render() {
     const history = this.state.history;
-    // console.log((history));
-    const current = history[history.length - 1];
-    // console.log(current);
-
-
+    const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
+
+    console.log("stepNumber: " + this.state.stepNumber + "       xIsNext: " + this.state.xIsNext);
+
+    // history arrayi içinde dönmek için map kullanıyoruz
+    const moves = history.map((step, sirasi) => {
+      const desc = sirasi ? "Git " + sirasi : "Oyuna Başla";
+      return(
+        <li key={sirasi}>
+          <button onClick={() => this.jumpTo(sirasi)}>{desc}</button>
+        </li>
+      );
+    });
+
+
+
+
     let status;
     if (winner) {
       status = 'Kazanan: ' + winner;
@@ -143,7 +177,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
