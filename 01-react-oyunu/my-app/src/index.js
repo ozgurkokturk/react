@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+//ilk
 
 <<<<<<< HEAD
 =======
