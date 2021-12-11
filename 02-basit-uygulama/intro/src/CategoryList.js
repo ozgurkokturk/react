@@ -25,7 +25,8 @@ export default class CategoryList extends Component {
         <h3>{this.props.bilgiler.baslik}</h3>
         <ListGroup>
           {this.state.kategoriler.map((item) => (
-            <ListGroupItem
+            <ListGroupItem 
+              active={this.props.simdikiKategori === item.categoryName?true:false}
               onClick={() => this.props.degistirSimdikiKategori(item)}
               key={item.id}
             >

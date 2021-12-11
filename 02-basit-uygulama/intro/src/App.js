@@ -8,6 +8,7 @@ export default class App extends Component {
   state = {
     simdikiKategori: "",
     urunler: [],
+    sepet: [],
   };
 
   degistirSimdikiKategori = (item) => {
@@ -30,15 +31,31 @@ export default class App extends Component {
       .then((data) => this.setState({ urunler: data }));
   };
 
+
+
+  sepeteEkle = (gelenItem) => {
+    let yeniSepet = this.state.sepet;
+    var addItem = yeniSepet.find(c => c.urun.id === gelenItem.id);
+    if(addItem){
+      addItem.quantity += 1;
+    }else{
+      yeniSepet.push({urun:gelenItem,quantity:1});
+    }
+    this.setState({sepet:yeniSepet});
+  }
+
+
   render() {
     let kategoriBilgileri = { baslik: "Kategori Listesi" };
     let urunBiglileri = { baslik: "Ürün Listesi" };
     return (
       <div>
         <Container>
-          <Row>
-            <Navi />
-          </Row>
+          
+            <Navi
+               sepet={this.state.sepet}
+            />
+          
           <Row>
             <Col xs="3">
               <CategoryList
@@ -52,6 +69,7 @@ export default class App extends Component {
                 urunler={this.state.urunler}
                 simdikiKategori={this.state.simdikiKategori}
                 bilgiler={urunBiglileri}
+                sepeteEkle={this.sepeteEkle}
               />
             </Col>
           </Row>

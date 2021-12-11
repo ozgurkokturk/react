@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import { Table,Button } from "reactstrap";
 
 export default class ProducList extends Component {
+
   render() {
     return (
       <div>
@@ -16,6 +17,7 @@ export default class ProducList extends Component {
               <th>Birim Başına Miktar</th>
               <th>Birim Fiyatı</th>
               <th>Stok Miktarı</th>
+              <th>İşlem</th>
             </tr>
           </thead>
           <tbody>
@@ -26,6 +28,7 @@ export default class ProducList extends Component {
                 <td>{item.quantityPerUnit} </td>
                 <td>{item.unitPrice} </td>
                 <td>{item.unitsInStock} </td>
+                <td><Button color="success" onClick={() => this.props.sepeteEkle(item)} >Ekle</Button></td>
               </tr>
             ))}
           </tbody>
