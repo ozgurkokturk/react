@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import CategoryList from "./CategoryList.js";
 import Navi from "./Navi.js";
 import ProducList from "./ProducList.js";
+import NotFound from "./NotFound";
+import CartList from "./CartList.js";
+
 import { Container, Row, Col } from "reactstrap";
+import alertify from "alertifyjs";
+import { Route, Routes } from "react-router-dom";
 
 export default class App extends Component {
   state = {
@@ -13,7 +18,6 @@ export default class App extends Component {
 
   degistirSimdikiKategori = (item) => {
     this.setState({ simdikiKategori: item.categoryName });
-    console.log(item.id);
     this.getirUrunler(item.id);
   };
 
@@ -21,7 +25,7 @@ export default class App extends Component {
     this.getirUrunler();
   }
 
-  getirUrunler = (id) => { 
+  getirUrunler = (id) => {
     let url = "http://localhost:3000/products";
     if (id) {
       url += "?categoryId=" + id;
@@ -31,19 +35,22 @@ export default class App extends Component {
       .then((data) => this.setState({ urunler: data }));
   };
 
-
-
   sepeteEkle = (gelenItem) => {
     let yeniSepet = this.state.sepet;
-    var addItem = yeniSepet.find(c => c.urun.id === gelenItem.id);
-    if(addItem){
+    var addItem = yeniSepet.find((c) => c.urun.id === gelenItem.id);
+    if (addItem) {
       addItem.quantity += 1;
-    }else{
-      yeniSepet.push({urun:gelenItem,quantity:1});
+    } else {
+      yeniSepet.push({ urun: gelenItem, quantity: 1 });
     }
-    this.setState({sepet:yeniSepet});
-  }
+    this.setState({ sepet: yeniSepet });
+    alertify.success(gelenItem.productName + " sepete eklendi!");
+  };
 
+  sepettenCikar = (gelenItem) => {
+    let yeniSepet = this.state.sepet.filter((c) => c.urun.id !== gelenItem.id);
+    this.setState({ sepet: yeniSepet });
+  };
 
   render() {
     let kategoriBilgileri = { baslik: "Kategori Listesi" };
@@ -51,11 +58,8 @@ export default class App extends Component {
     return (
       <div>
         <Container>
-          
-            <Navi
-               sepet={this.state.sepet}
-            />
-          
+          <Navi sepet={this.state.sepet} sepettenCikar={this.sepettenCikar} />
+
           <Row>
             <Col xs="3">
               <CategoryList
@@ -65,12 +69,29 @@ export default class App extends Component {
               />
             </Col>
             <Col xs="9">
-              <ProducList
-                urunler={this.state.urunler}
-                simdikiKategori={this.state.simdikiKategori}
-                bilgiler={urunBiglileri}
-                sepeteEkle={this.sepeteEkle}
-              />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <ProducList
+                      urunler={this.state.urunler}
+                      simdikiKategori={this.state.simdikiKategori}
+                      bilgiler={urunBiglileri}
+                      sepeteEkle={this.sepeteEkle}
+                    />
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={
+                    <CartList
+                      sepet={this.state.sepet}
+                      sepettenCikar={this.sepettenCikar}
+                    />
+                  }
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </Col>
           </Row>
         </Container>

@@ -5,9 +5,10 @@ import {
   NavLink,
   NavItem,
   NavbarBrand,
-  NavbarToggler
+  NavbarToggler,
 } from "reactstrap";
 import SepetToplam from "./SepetToplam";
+import { Link } from "react-router-dom";
 
 export default class Navi extends Component {
   render() {
@@ -17,18 +18,19 @@ export default class Navi extends Component {
           <Navbar color="light" expand="md" light>
             <NavbarBrand href="/">North Wind App</NavbarBrand>
             <NavbarToggler onClick={function noRefCheck() {}} />
-       
-              <Nav className="ml-auto" style={{float:'right'}} navbar>
-                <NavItem>
-                  <NavLink href="/components/">Components</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">
-                    GitHub
-                  </NavLink>
-                </NavItem>
-                  <SepetToplam sepet={this.props.sepet} />
-              </Nav>        
+
+            <Nav className="ml-auto" style={{ float: "right" }} navbar>
+              <NavItem>
+                <Link to="/cart">Sepete Git</Link>
+              </NavItem>
+              <NavItem style = {{marginLeft: "10px"}}>
+                <Link to="/">Go Home</Link>
+              </NavItem>
+              <SepetToplam
+                sepet={this.props.sepet}
+                sepettenCikar={this.props.sepettenCikar}
+              />
+            </Nav>
           </Navbar>
         </div>
       </div>

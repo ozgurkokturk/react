@@ -19,6 +19,7 @@ export default class sepetToplam extends Component {
         <DropdownMenu end>
           {this.props.sepet.map((sepetItem) => (
             <DropdownItem key={sepetItem.urun.id}>
+              <Badge color="danger" onClick={() => this.props.sepettenCikar(sepetItem.urun)}>Çıkar</Badge>
               {sepetItem.urun.productName}
               <Badge color="primary">{sepetItem.quantity}</Badge>
             </DropdownItem>
