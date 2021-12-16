@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Table} from 'reactstrap';
+import {Table, Button} from 'reactstrap';
+
 
 export default class CartList extends Component {
     renderSepet(){
@@ -17,9 +18,7 @@ export default class CartList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                {console.log(this.props.sepet)}
                     {
-                       
                         this.props.sepet.map(item => (
                             <tr key={item.urun.id}>                                        
                             <td>{item.urun.id} </td>
@@ -29,9 +28,11 @@ export default class CartList extends Component {
                             <td>{item.urun.unitPrice} </td>
                             <td>{item.urun.unitsInStock} </td>
                             <td>{item.quantity}</td>
+                            <td>
+                                <Button color="danger" onClick={() => this.props.sepettenCikar(item.urun)}>Çıkar</Button>
+                            </td>
                           </tr>
                         ))
-                        
                     }
                 </tbody>
             </Table>

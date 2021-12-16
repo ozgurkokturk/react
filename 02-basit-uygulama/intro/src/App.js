@@ -4,6 +4,9 @@ import Navi from "./Navi.js";
 import ProducList from "./ProducList.js";
 import NotFound from "./NotFound";
 import CartList from "./CartList.js";
+import Form1 from "./Form1.js";
+import Form2 from "./Form2.js";
+
 
 import { Container, Row, Col } from "reactstrap";
 import alertify from "alertifyjs";
@@ -50,6 +53,7 @@ export default class App extends Component {
   sepettenCikar = (gelenItem) => {
     let yeniSepet = this.state.sepet.filter((c) => c.urun.id !== gelenItem.id);
     this.setState({ sepet: yeniSepet });
+    alertify.error(gelenItem.productName + " sepetten çıkarıldı!");
   };
 
   render() {
@@ -90,6 +94,8 @@ export default class App extends Component {
                     />
                   }
                 />
+                <Route path="/form1" element={<Form1 />} />
+                <Route path="/form2" element={<Form2 />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Col>

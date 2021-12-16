@@ -20,11 +20,17 @@ export default class Navi extends Component {
             <NavbarToggler onClick={function noRefCheck() {}} />
 
             <Nav className="ml-auto" style={{ float: "right" }} navbar>
-              <NavItem>
-                <Link to="/cart">Sepete Git</Link>
-              </NavItem>
               <NavItem style = {{marginLeft: "10px"}}>
                 <Link to="/">Go Home</Link>
+              </NavItem>
+              <NavItem style = {{marginLeft: "10px"}}>
+                <Link to="/cart"> Sepete Git</Link>
+              </NavItem>
+              <NavItem style = {{marginLeft: "10px"}}>
+                <Link to="/form1">Form1</Link>
+              </NavItem>
+              <NavItem style = {{marginLeft: "10px"}}>
+                <Link to="/form2">Form2</Link>
               </NavItem>
               <SepetToplam
                 sepet={this.props.sepet}
