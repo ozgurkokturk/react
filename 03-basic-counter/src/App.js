@@ -8,7 +8,6 @@ export default class App extends Component {
   };
 
   actionHandler = (items) => {
-  
     let payload = items.payload;
     var action = items.actions;
     let newState = this.state;
