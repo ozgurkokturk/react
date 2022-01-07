@@ -3,10 +3,9 @@ import initialState from "./initialState";
 
 
 // Reducers stateleri döndürür.
-export default function changeCategoryReducers(state = initialState.currentCategory, action) {
-  console.log(action.payload);
+export default function changeCategoryReducers(state = initialState.categories, action) {
   switch (action.type) {
-    case actionTypes.CHANGE_CATEGORY:
+    case actionTypes.GET_CATEGORIES_SUCCESS:
       return action.payload;
     default:
       return state; //initialState gönderiliyor

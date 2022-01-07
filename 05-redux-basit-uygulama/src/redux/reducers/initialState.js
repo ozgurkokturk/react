@@ -1,3 +1,4 @@
 export default {
-    currentCategory : {}
+    currentCategory : {categoryName : "kategori adı buraya gelecek"},
+    categories : []
 }
