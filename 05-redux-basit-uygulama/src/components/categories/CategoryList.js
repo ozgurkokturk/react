@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-
 import {bindActionCreators} from "redux"
 import * as categoryActions from "../../redux/actions/categoryActions"
-
+import * as productActions from "../../redux/actions/productActions"
 import {ListGroup, ListGroupItem} from "reactstrap"
 
-class CategoryList extends Component {
 
+
+class CategoryList extends Component {
+  
     componentDidMount(){
         this.props.actions.getCategories();
     }
+    
+    selectCategory(category) {
+        this.props.actions.changeCategory(category);
+        this.props.actions.getProducts(category.id);
+    }
 
+   
     render() {
         return (
             <div>
@@ -19,7 +26,7 @@ class CategoryList extends Component {
                 <ListGroup>
                     {
                      this.props.categories.map(category => (
-                         <ListGroupItem active={category.id === this.props.currentCategory.id} onClick={() => this.props.actions.changeCategory(category)} key={category.id}>
+                         <ListGroupItem active={category.id === this.props.currentCategory.id} onClick={() => this.selectCategory(category)} key={category.id} className="categoryList">
                                {category.categoryName}
                          </ListGroupItem>
                      ))
@@ -31,10 +38,11 @@ class CategoryList extends Component {
     }
 }
 
+
+
 // Tüm state'leri alabilmek için
 function mapStateToProps(state){
     // combineReducers yaptığımız bütün reduxlar state olarak geldi
-    console.log(state);
     return{
         currentCategory: state.changeCategoryReducers,
         categories : state.categoryListReducers
@@ -47,7 +55,8 @@ function mapDispatchToProps(dispatch){
         actions:{
             //  categoryActions'larıdaki getCategories'i çağırıyoruz o da categoryAction'larda getCategoriesSuccess'i çağırıyor
             getCategories: bindActionCreators(categoryActions.getCategories,dispatch),
-            changeCategory: bindActionCreators(categoryActions.changeCategory,dispatch)
+            changeCategory: bindActionCreators(categoryActions.changeCategory,dispatch),
+            getProducts : bindActionCreators(productActions.getProducts,dispatch)
         }
     }
 }

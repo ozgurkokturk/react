@@ -1,4 +1,6 @@
 export default {
-    currentCategory : {categoryName : "kategori adı buraya gelecek"},
-    categories : []
+    currentCategory : {categoryName : null},
+    categories : [],
+    products : [],
+    cart : []
 }
