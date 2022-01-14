@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as productActions from "../../redux/actions/productActions";
 import * as cartActions from "../../redux/actions/cartActions";
 import { Table, Button } from "reactstrap";
+import alertify from "alertifyjs";
 
 class ProductList extends Component {
   componentDidMount() {
@@ -15,7 +16,9 @@ class ProductList extends Component {
   }
 
   addToCart = (product) => {
+    // quantity ve product isminde 2 farklı obje state state'e yani cartReducers'a gidiyor
     this.props.actions.addToCart({quantity:1,product:product});
+    alertify.success(product.productName + "sepete eklendi");
   }
 
   render() {
