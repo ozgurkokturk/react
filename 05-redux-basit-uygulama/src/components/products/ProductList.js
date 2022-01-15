@@ -5,8 +5,10 @@ import * as productActions from "../../redux/actions/productActions";
 import * as cartActions from "../../redux/actions/cartActions";
 import { Table, Button } from "reactstrap";
 import alertify from "alertifyjs";
+import {Link} from "react-router-dom"
 
 class ProductList extends Component {
+  
   componentDidMount() {
     this.props.actions.getProducts();
   }
@@ -45,7 +47,7 @@ class ProductList extends Component {
               <tr key={product.id}>
                 <th scope="row">{(index+1)}</th>
                 <td>{product.id}</td>
-                <td>{product.productName}</td>
+                <td><Link to={"/createorupdateproduct/"+product.id}>{product.productName}</Link></td>
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitPrice}</td>
                 <td>{product.unitsInStock}</td>

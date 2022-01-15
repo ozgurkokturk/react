@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import alertify from "alertifyjs";
 
 class CartSummary extends Component {
+
   removeFromCart(cartItem) {
     this.props.actions.removeFromCart(cartItem);
     alertify.error(cartItem.product.productName + " sepetten silindi");
@@ -30,7 +31,7 @@ class CartSummary extends Component {
     return (
       <UncontrolledDropdown inNavbar nav>
         <DropdownToggle caret nav>
-          Options
+          Sepetiniz
         </DropdownToggle>
         <DropdownMenu className="dropmrop">
           <DropdownItem>

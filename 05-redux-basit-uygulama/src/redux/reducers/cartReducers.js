@@ -2,6 +2,12 @@ import * as actionTypes from "../actions/actionTypes";
 import initialState from "./initialState";
 
 // Reducers stateleri döndürür.
+
+/*
+  Descrption
+  Aynı ürün sepete eklenmeye çalışılıyorsa sadece quantity arttır aksi halde
+  bu yeni bir üründür state'e ürünü ekle
+*/
 export default function cartReducers(state = initialState.cart, action) {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
@@ -16,7 +22,7 @@ export default function cartReducers(state = initialState.cart, action) {
         });
         return newState;
       } else {
-        // mevcut state'e action.payload merge et (array olarak)(redux'da array push yapılmaması  gerekiyormuş)
+        // mevcut state'e action.payload merge et (array olarak)(redux'da array push yapılmaması gerekiyormuş)
         return [...state, { ...action.payload }];
         /*             
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax

@@ -64,6 +64,7 @@ export function createOrUpdateProduct(product) {
   };
 }
 
+//export demedime
 async function handleResponse(response) {
   if (response.ok) {
     return response.json();
@@ -72,6 +73,7 @@ async function handleResponse(response) {
   throw new Error(error);
 }
 
+//export demedim
 function handleError(resposeError) {
   console.error("hata productActions de olmalı! ");
   throw resposeError;
