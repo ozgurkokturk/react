@@ -13,6 +13,7 @@ export default class Navi extends Component {
 
           <Nav className="ml-auto" navbar>
             <NavItem style={{ marginLeft: "10px" }}><Link to="/">Go Home</Link></NavItem>
+            <NavItem style={{ marginLeft: "10px" }}><Link to="/createorupdateproduct/">Ürün Ekle</Link></NavItem>
             <CartSummary />
           </Nav>
         </Navbar>

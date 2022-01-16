@@ -46,8 +46,8 @@ export function createOrUpdateProductApi(product) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify(product),
   })
-    .then(response => handleResponse(response))
-    .catch(responseError => handleError(responseError));
+    .then((response) => handleResponse(response))
+    .catch((responseError) => handleError(responseError));
 }
 
 export function createOrUpdateProduct(product) {
@@ -64,7 +64,7 @@ export function createOrUpdateProduct(product) {
   };
 }
 
-//export demedime
+//export demedim
 async function handleResponse(response) {
   if (response.ok) {
     return response.json();
@@ -80,3 +80,30 @@ function handleError(resposeError) {
 }
 
 /* -------------------------------- */
+
+/* ------ DELETE PRODUCT ------ */
+export function deleteProductSuccess(product) {
+  //console.log(product);
+  return {
+    type: actionTypes.DELETE_PRODUCT_SUCCESS,
+    payload: product,
+  };
+}
+
+export function deleteProduct(product) {
+  return function (dispatch) {
+    let url = "http://localhost:3000/products/" + product.id;
+    return fetch(url, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+      .then((response) => response.json())
+      // result'ı return etmek yerine bu fonksiyona gelen product bilgilerini return ettim state'den silebilmek için
+      .then((result) => dispatch(deleteProductSuccess(product)))
+      .catch((error) => {
+        throw error;
+      });
+  };
+}
+
+/* ---------------------------- */

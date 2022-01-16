@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     categoryListReducers: categoryListReducers,
     productListReducers: productListReducers,
     cartReducers : cartReducers,
-    createOrUpdateProductReducers: createOrUpdateProductReducers
+    createOrUpdateProductReducers: createOrUpdateProductReducers,
 })
 
 export default rootReducer;
