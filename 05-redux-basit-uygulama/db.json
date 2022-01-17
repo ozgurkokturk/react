@@ -1,22 +1,6 @@
 {
   "products": [
     {
-      "id": 9,
-      "categoryId": 6,
-      "productName": "Mishi Kobe Niku",
-      "quantityPerUnit": "18 - 500 g pkgs.",
-      "unitPrice": 97,
-      "unitsInStock": 29
-    },
-    {
-      "id": 10,
-      "categoryId": 8,
-      "productName": "Ikura anka",
-      "quantityPerUnit": "12 - 200 ml jars",
-      "unitPrice": 31,
-      "unitsInStock": 31
-    },
-    {
       "id": 12,
       "categoryId": 4,
       "productName": "Queso Manchego La Pastora",
@@ -31,22 +15,6 @@
       "quantityPerUnit": "24 - 250 ml bottles",
       "unitPrice": 15.5,
       "unitsInStock": 39
-    },
-    {
-      "id": 16,
-      "categoryId": 3,
-      "productName": "Pavlova",
-      "quantityPerUnit": "32 - 500 g boxes",
-      "unitPrice": 17.45,
-      "unitsInStock": 29
-    },
-    {
-      "id": 18,
-      "categoryId": 8,
-      "productName": "Carnarvon Tigers",
-      "quantityPerUnit": "16 kg pkg.",
-      "unitPrice": 62.5,
-      "unitsInStock": 42
     },
     {
       "id": 19,
@@ -137,14 +105,6 @@
       "unitsInStock": 0
     },
     {
-      "id": 30,
-      "categoryId": 8,
-      "productName": "Nord-Ost Matjeshering",
-      "quantityPerUnit": "10 - 200 g glasses",
-      "unitPrice": 25.89,
-      "unitsInStock": 10
-    },
-    {
       "id": 31,
       "categoryId": 4,
       "productName": "Gorgonzola Telino",
@@ -185,22 +145,6 @@
       "unitsInStock": 20
     },
     {
-      "id": 36,
-      "categoryId": 8,
-      "productName": "Inlagd Sill",
-      "quantityPerUnit": "24 - 250 g  jars",
-      "unitPrice": 19,
-      "unitsInStock": 112
-    },
-    {
-      "id": 37,
-      "categoryId": 8,
-      "productName": "Gravad lax",
-      "quantityPerUnit": "12 - 500 g pkgs.",
-      "unitPrice": 26,
-      "unitsInStock": 11
-    },
-    {
       "id": 38,
       "categoryId": 1,
       "productName": "Côte de Blaye",
@@ -215,22 +159,6 @@
       "quantityPerUnit": "750 cc per bottle",
       "unitPrice": 18,
       "unitsInStock": 69
-    },
-    {
-      "id": 40,
-      "categoryId": 8,
-      "productName": "Boston Crab Meat",
-      "quantityPerUnit": "24 - 4 oz tins",
-      "unitPrice": 18.4,
-      "unitsInStock": 123
-    },
-    {
-      "id": 41,
-      "categoryId": 8,
-      "productName": "Jack's New England Clam Chowder",
-      "quantityPerUnit": "12 - 12 oz cans",
-      "unitPrice": 9.65,
-      "unitsInStock": 85
     },
     {
       "id": 42,
@@ -255,22 +183,6 @@
       "quantityPerUnit": "20 - 2 kg bags",
       "unitPrice": 19.45,
       "unitsInStock": 27
-    },
-    {
-      "id": 45,
-      "categoryId": 8,
-      "productName": "Rogede sild",
-      "quantityPerUnit": "1k pkg.",
-      "unitPrice": 9.5,
-      "unitsInStock": 5
-    },
-    {
-      "id": 46,
-      "categoryId": 8,
-      "productName": "Spegesild",
-      "quantityPerUnit": "4 - 450 g glasses",
-      "unitPrice": 12,
-      "unitsInStock": 95
     },
     {
       "id": 47,
@@ -359,14 +271,6 @@
       "quantityPerUnit": "24 - 250 g pkgs.",
       "unitPrice": 19.5,
       "unitsInStock": 36
-    },
-    {
-      "id": 58,
-      "categoryId": 8,
-      "productName": "Escargots de Bourgogne",
-      "quantityPerUnit": "24 pieces",
-      "unitPrice": 13.25,
-      "unitsInStock": 62
     },
     {
       "id": 59,
@@ -463,6 +367,14 @@
       "quantityPerUnit": "24 - 355 ml bottles",
       "unitPrice": 15,
       "unitsInStock": 15
+    },
+    {
+      "categoryId": 8,
+      "id": 71,
+      "productName": "uskumru",
+      "quantityPerUnit": "1",
+      "unitPrice": "5",
+      "unitsInStock": "150"
     }
   ],
   "categories": [

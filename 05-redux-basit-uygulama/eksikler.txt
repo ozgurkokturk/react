@@ -1,0 +1,2 @@
++ Bir ürünü güncellemek için üstüne tıkladıktan sonra açılan "http://localhost:3001/createorupdateproduct/12" adreste
+işlem yapmadan yeni ürün eklemek için "ürün ekle" link'ine tıklayınca inputlardaki mevcut veriler kaybolmuyor
