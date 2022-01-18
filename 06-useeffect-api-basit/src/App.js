@@ -23,18 +23,6 @@ const App = () => {
       clearTimeout(delayDebounceFn);
     }
 
-
-/*     //useEffect
-    const timer = setTimeout(() => {
-      console.log("giriyor");
-    }, 1000);
-
-    console.log("useEffect Çalıştı");
-
-    return () =>{
-      console.log("component Unmount!")
-      clearTimeout(timer);
-    } */
  
   }, [query]);
 
