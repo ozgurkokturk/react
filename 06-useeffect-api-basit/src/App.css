@@ -1,0 +1,41 @@
+.App {
+
+  width: 90vw;
+  height: 70vh;
+  margin: 100px auto;
+  text-align: center;
+  position: relative;
+}
+
+.aranacak{
+  border:1px solid black;
+}
+
+.aranacak > input{
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  width: 30%;
+  height: 40px;
+  z-index: 0;
+}
+.aranacak > label{
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  z-index: 1;;
+}
+
+ul{
+  list-style-type: none;
+  text-align: left;
+  margin-top: 100px;
+}
+li{
+  display: block;
+  margin-bottom: 10px;
+}
+
+b{
+  margin-right: 10px;
+}
