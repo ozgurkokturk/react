@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Anasayfa from "./Anasayfa";
+import Deneme from "./Deneme";
 import "./App.css";
 
 const temalar = {
@@ -13,27 +14,69 @@ const temalar = {
   },
 };
 
+const temaAdlari = {
+  dark: "Dark Tema",
+  light: "Light Tema",
+};
+
 export const TemaContext = React.createContext();
 
 const App = () => {
-  const [tema, setTema] = useState(temalar.light);
+  const [tema, setTema] = useState({
+    temaSayfa: temalar.light,
+    temaButton: temalar.dark,
+    temaAdi: temaAdlari.dark,
+  });
 
-  const toggleTema = () => {
-    if (tema === temalar.dark) {
-      setTema(temalar.light);
+  const [coin, setCoin] = useState({});
+
+/*   const toggleTema = () => {
+    console.log(tema);
+    if (tema.temaSayfa === temalar.dark) {
+      setTema((pre) => ({
+        ...pre,
+        temaSayfa: temalar.light,
+        temaButton: temalar.dark,
+        temaAdi: temaAdlari.dark,
+      }));
     } else {
-      setTema(temalar.dark);
+      setTema((pre) => ({
+        ...pre,
+        temaSayfa: temalar.dark,
+        temaButton: temalar.light,
+        temaAdi: temaAdlari.light,
+      }));
+    }
+  }; */
+
+    const toggleTema = () => {
+    console.log(tema);
+    if (tema.temaSayfa === temalar.dark) {
+      setTema({
+        temaSayfa: temalar.light,
+        temaButton: temalar.dark,
+        temaAdi: temaAdlari.dark,
+      });
+    } else {
+      setTema({
+        temaSayfa: temalar.dark,
+        temaButton: temalar.light,
+        temaAdi: temaAdlari.light,
+      });
     }
   };
 
   return (
     <div className="App">
-      <button onClick={() => toggleTema()}>
-        {tema === temalar.dark ? "Light Tema" : "Dark Tema"}
+      <button onClick={() => toggleTema()} style={tema.temaButton}>
+        {tema.temaAdi}
       </button>
-      <TemaContext.Provider value={tema}>
+      <Deneme initialCount={0}/>
+      <TemaContext.Provider value={tema.temaSayfa}>
         <Anasayfa />
       </TemaContext.Provider>
+
+
     </div>
   );
 };

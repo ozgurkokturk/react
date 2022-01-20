@@ -3,7 +3,7 @@ import { TemaContext } from "./App.js";
 
 function Anasayfa() {
     const tema = useContext(TemaContext);
-    console.log(tema);
+    //console.log(tema);
   return (
     <div className="App" style={tema}>
       <h2>useContext</h2>
@@ -28,6 +28,11 @@ function Anasayfa() {
         read the context and subscribe to its changes. You still need a
         MyContext.Provider above in the tree to provide the value for this
         context.
+      </div>
+      <div className="tip">
+        <ul>
+          <li>1</li>
+        </ul>
       </div>
     </div>
   );
