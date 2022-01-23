@@ -1,6 +1,6 @@
 .App {
   width: 80vw;
-  height: 70vh;
+  height: auto;
   margin: 50px auto 0 auto;
   line-height: 30px;
   text-align: justify;
@@ -25,4 +25,8 @@ h1,h2,h3{
 button{
   width: 130px;
   height: 40px;
+}
+
+input {
+  height: 30px;
 }

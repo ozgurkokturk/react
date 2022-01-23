@@ -1,11 +1,33 @@
 import React, { useContext } from "react";
-import { TemaContext } from "./App.js";
+import { SayfaContext } from "./App.js";
 
 function Anasayfa() {
-    const tema = useContext(TemaContext);
-    //console.log(tema);
+
+
+  function handleSave(event){
+    event.preventDefault();
+    // submit olayını genelde onchange üzerinden yapıyorlar fakat 
+    // direkt yapmak istersek biraz daha zahmetli input sayısı arttırkça [0] değerini attırmak gerekebilir
+    const {value } = event.target[0];
+
+    // eski değerleri çekip set ediyoruz
+    // ... ifadesini silip 2-3 tane değer gir aradaki farkı gör
+    setListe((pre) => (
+      [...pre,value]
+    ));
+  }
+
+  // {tema} kullanımı gelen objenin içerisindeki tema değerine direkt ulaşmamızı sağlıyor
+  // aksi halde gelen değeri bir değere eşitleyip  deger.tema şeklinde kullanmamız gerekecekti.
+    const {tema,setListe} = useContext(SayfaContext);
   return (
-    <div className="App" style={tema}>
+    <div className="App" style={tema.temaSayfa}>
+      <form onSubmit={handleSave}>
+        <label>Coinleri Gir: </label>
+        <input type="text" name="coin"  />
+        <input type="submit" value="ekle" />
+      </form>
+      <hr/>
       <h2>useContext</h2>
       <hr />
       <code>const value = useContext(MyContext);</code>
@@ -28,11 +50,6 @@ function Anasayfa() {
         read the context and subscribe to its changes. You still need a
         MyContext.Provider above in the tree to provide the value for this
         context.
-      </div>
-      <div className="tip">
-        <ul>
-          <li>1</li>
-        </ul>
       </div>
     </div>
   );

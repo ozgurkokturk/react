@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Anasayfa from "./Anasayfa";
-import Deneme from "./Deneme";
+import Liste from "./Liste";
 import "./App.css";
 
 const temalar = {
@@ -19,18 +19,21 @@ const temaAdlari = {
   light: "Light Tema",
 };
 
-export const TemaContext = React.createContext();
+export const SayfaContext = React.createContext();
 
 const App = () => {
+  const [liste, setListe] = useState(["ROCO"]);
+
   const [tema, setTema] = useState({
     temaSayfa: temalar.light,
     temaButton: temalar.dark,
     temaAdi: temaAdlari.dark,
   });
 
-  const [coin, setCoin] = useState({});
 
-/*   const toggleTema = () => {
+
+  // Sanırım bu örnekte Spread (Yayma) operatörü kullanmaya gerek yok
+  /*   const toggleTema = () => {
     console.log(tema);
     if (tema.temaSayfa === temalar.dark) {
       setTema((pre) => ({
@@ -49,8 +52,7 @@ const App = () => {
     }
   }; */
 
-    const toggleTema = () => {
-    console.log(tema);
+  const toggleTema = () => {
     if (tema.temaSayfa === temalar.dark) {
       setTema({
         temaSayfa: temalar.light,
@@ -66,17 +68,23 @@ const App = () => {
     }
   };
 
+  // Provider olarak geçilen tüm verilerin toplantığı obje
+  const bigData = {
+    tema,
+    liste,
+    setListe,
+  };
+
   return (
     <div className="App">
       <button onClick={() => toggleTema()} style={tema.temaButton}>
         {tema.temaAdi}
       </button>
-      <Deneme initialCount={0}/>
-      <TemaContext.Provider value={tema.temaSayfa}>
+
+      <SayfaContext.Provider value={bigData}>
         <Anasayfa />
-      </TemaContext.Provider>
-
-
+        <Liste />
+      </SayfaContext.Provider>
     </div>
   );
 };
